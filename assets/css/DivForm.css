@@ -1,0 +1,58 @@
+.form-hide {
+  margin-top: 40px;
+  padding: 30px;
+  background: #f1f1f1;
+  border-radius: 20px;
+  /*display: none!important;*/
+  /*transition: all .5s;*/
+}
+
+.div-form {
+  margin-top: 40px;
+  padding: 30px;
+  background: #f1f1f1;
+  border-radius: 20px;
+  display: block;
+  transition: all .3s;
+}
+
+.div-form > form > div > div {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /*width: 50%;*/
+  padding-left: 0PX;
+  padding-right: 10px;
+  float: left;
+}
+
+.div-form-success {
+  background-position: left!important;
+  transition: all 3s!important;
+}
+
+.div-form-success input {
+  background: var(--bs-green);
+  border-color: white;
+  color: white;
+  transition: all 2s ease-in-out;
+}
+
+.div-form-success form {
+  color: var(--bs-green);
+  height: 0px;
+  float: none;
+  transition: all 0.5s ease-in-out!important;
+  transform: scale(0,0);
+}
+
+.div-form-success input::placeholder {
+  transition: all 2s;
+  color: white;
+}
+
+.div-form {
+  background: linear-gradient(100deg, var(--bs-green) 50%, #f1f1f1 50%) right;
+  background-size: 250%;
+  transition: all 1s;
+}
+

@@ -1,0 +1,196 @@
+.div-form .submit {
+  color: white;
+  background: linear-gradient(to left, var(--bs-green) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 39%;
+  transition: all 0.2s ease-in-out;
+  margin-left: 1%;
+  margin-top: 50px;
+  white-space: nowrap;
+}
+
+.div-form .submit:disabled {
+  color: white;
+  background: linear-gradient(to left, var(--bs-gray-600) 50%, var(--bs-red) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 39%;
+  transition: all 0.2s ease-in-out;
+  margin-left: 1%;
+  margin-top: 50px;
+  white-space: nowrap;
+}
+
+.div-form .submit:hover {
+  background-position: left;
+  color: var(--bs-green);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px #408867;
+}
+
+.div-form .submit:hover:disabled {
+  background-position: left;
+  color: var(--bs-body-bg);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px #666666;
+}
+
+.div-form .back {
+  background-color: var(--bs-red);
+  color: white;
+  background: linear-gradient(to left, var(--bs-red) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 39%;
+  transition: all 0.2s ease-in-out;
+  margin-top: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+  white-space: nowrap;
+}
+
+.div-form .back:hover {
+  background-position: left;
+  color: var(--bs-red);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px rgb(227,88,101);
+}
+
+.div-form .changelog {
+  background-color: rgb(81,84,94);
+  color: white;
+  background: linear-gradient(to left, rgb(81,84,94) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 19%;
+  margin-right: 1%;
+  transition: all 0.2s ease-in-out;
+  margin-top: 50px;
+  white-space: nowrap;
+}
+
+.div-form .changelog:hover {
+  background-position: left;
+  color: rgb(81,84,94);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px rgb(81,84,94);
+}
+
+.div-form button:active {
+  background-position: right!important;
+  box-shadow: 4px 4px 15px var(--bs-gray-dark)!important;
+}
+
+.div-form button {
+  background-color: var(--bs-gray-dark);
+  color: white;
+  background: linear-gradient(to left, var(--bs-gray-dark) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  /*width: 49%;*/
+  transition: all 0.2s ease-in-out;
+  margin-top: 37px;
+  box-shadow: 2px 2px 2px var(--bs-gray);
+}
+
+.div-form button:disabled, #new-image:disabled {
+  background-color: var(--bs-gray);
+  color: white;
+  background: linear-gradient(to left, var(--bs-gray) 50%, var(--bs-red) 50%) right;
+  background-size: 200%;
+  float: left;
+  /*width: 49%;*/
+  transition: all 0.2s ease-in-out;
+  margin-top: 37px;
+  box-shadow: 2px 2px 2px var(--bs-gray);
+}
+
+.div-form button:hover {
+  background-position: left;
+  color: var(--bs-gray-dark);
+  /*background: linear-gradient(to left, var(--bs-gray-dark) 50%, var(--bs-body-bg) 50%) right;*/
+  background-size: 200%;
+  float: left;
+  /*width: 49%;*/
+  transition: all 0.2s ease-in-out;
+  margin-top: 37px;
+  box-shadow: 2px 2px 2px var(--bs-gray);
+}
+
+.div-form button:disabled:hover {
+  background-position: left;
+  color: var(--bs-gray-100);
+  /*background: linear-gradient(to left, var(--bs-gray-dark) 50%, var(--bs-body-bg) 50%) right;*/
+  background-size: 200%;
+  float: left;
+  /*width: 49%;*/
+  transition: all 0.2s ease-in-out;
+  margin-top: 37px;
+  box-shadow: 2px 2px 2px var(--bs-gray);
+}
+
+.div-form .div-image {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 100%;
+  transition: all .3s;
+}
+
+.image-container {
+  contain: content;
+  display: inline-flex;
+  width: 22.15%;
+  background-color: #51545e;
+  margin: 15px;
+  padding: 0px;
+  border-radius: 10%;
+}
+
+.div-form img {
+  height: 250px;
+  width: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.div-image div span {
+  width: 80%;
+  padding: 5px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.87);
+  color: #343a40;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+.div-image div:hover > span {
+  width: 95%;
+  height: 95%;
+  border-radius: 28px;
+  top: 50%;
+  background: white;
+  transition: all .5s ease-in-out;
+  font-size: 26px;
+  /*font-weight: bold;*/
+}
+
+.div-image div:hover {
+  background: rgb(255,14,107);
+  transition: all .3s;
+}
+
+.div-image div {
+  transition: all .5s;
+}
+

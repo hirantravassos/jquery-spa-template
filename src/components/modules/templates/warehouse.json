@@ -1,0 +1,14 @@
+{
+	"1": {
+		"title": "Estoque Simples",
+        "name" : {
+            "innertext": "Nome",
+			"name": "name",
+			"type": "text",
+			"mask": "",
+			"width": "100%",
+			"example": "Nome Exemplo",
+			"list": "show"
+        }
+    }
+}

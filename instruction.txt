@@ -1,0 +1,49 @@
+Project Structure:
+    assets: Has css (bootstrap unused), and within js has jquery and some plugins (which are 
+    functions that can be used to facilitate the rest of the project)
+    src: Contains everything else.
+    index.html: Should never be changed, unless utimately necessary, it is a SPA.
+
+CSS:
+    Colors: Within "root.css" file you might find the colors variables, change at will.
+    They are divided by components, so you may find style of input, navbar, sidebar, select, etc.
+    Again, bootstrap unused, you should change its styles only if you are confident about your skills.
+
+SRC: 
+    You may find our primarely functions triggers at the root as bellow.
+
+    routes.js: 
+        Events and functions controlling the route of the app, simple but effective.
+        RECOMENDATION: Do not change, it's a factory file.
+
+    index.js:
+        A perfect and round world, the application should start here. In case of browser reload event 
+        it might start from "routes.js" event listeners.
+
+    apiconfig.js: 
+        GetLogin: 
+            As usual, get the token here, set cookies there.
+            IMPORTANT: Always return and json with usernameID and token, at least, modify at will
+            althogth not recomended.
+        API: 
+            Its the call of your project api, you can easily call an api within one line of code.
+            Note that every call you sent has and UsernameID and Token already set.
+
+            path: Your path desired, as an example: "api-app" + path as string: "/v1/login"
+            request: Your data sent always stringify.
+
+        const apiUrl and ftpUrl: Those are variables to your back-end app and ftp, modify at will.
+
+SRC / COMPONENTS:
+    The folder Structure is simple and intuitive, every components has all of its needs supplied by 
+    files within, so there's no need to be chasing files to modify a single component, with exceptions 
+    of CSS and Plugins of course.
+
+    MODULES:
+        There it is your playground, here it is the main customizable part of the project. 
+        Here you can control everything it is shown in the div "page", most of all are covered by 
+        CSS files, some might need a little handy.
+
+        modules.js: 
+            CreateModule: Factory.
+            GetModule: You can callout your pages here.

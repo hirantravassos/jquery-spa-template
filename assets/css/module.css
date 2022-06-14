@@ -1,0 +1,14 @@
+.module {
+    display: inline-flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    background-color: rgb(238, 237, 237);
+    border-radius: 5px;
+
+    width: 100%;
+    box-shadow: 2px 2px 5px grey;
+}

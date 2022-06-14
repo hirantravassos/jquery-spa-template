@@ -1,0 +1,144 @@
+.subsidebar {
+    position: fixed;
+    z-index: 1;
+    /* left: 0px; */
+
+    display: flex;
+    flex-direction:column;
+    background-color: rgb(71, 71, 71);
+    width: 135px;
+    min-height: 100vh;
+
+    border-top: 0px;
+    border-bottom: 0px;
+    border-right: 3px;
+    border-left: 0px;
+    border-style: solid;
+    border-color: grey;
+
+    box-shadow: 5px 5px 15px rgb(71, 71, 71);
+    transition: all 0.5s;
+}
+
+.subsidebar div:nth-child(1) {
+    height: 60px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.subsidebar-title {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.subsidebar-config {
+    flex-grow: 2;
+    justify-content: flex-end;
+    margin-top: 52vh!important;
+}
+
+.subsidebar > li {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+    overflow-wrap: normal;
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+.subsidebar li:hover a {
+    position: relative;
+    color: rgb(71, 71, 71);
+    z-index: 4;
+
+    transition: all 0.3s;
+}
+.subsidebar li:hover {
+    position: relative;
+    color: rgb(71, 71, 71);
+    z-index: 3;
+
+    transition: all 0.3s;
+}
+
+.subsidebar li:hover .subsidebar-icon {
+    position: relative;
+    z-index: 1;
+
+    /* color: rgb(71, 71, 71); */
+    
+    border-radius: 100%;
+    outline: 43px solid rgb(224, 224, 224);
+    overflow: hidden;
+    
+    transition: all 0.5s;
+}
+
+.subsidebar-icon {
+    display: flex;
+    flex-direction: column;
+
+    align-self: center;
+
+    border-radius: 80%;
+    outline: 0px solid rgb(224, 224, 224);
+
+    font-size: 16px;
+    color: rgb(224, 224, 224);
+
+    padding: 1px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+
+    transform: scale(1.5);
+    z-index: 1;
+
+    transition: all 0.3s;
+}
+
+.subsidebar-icon-target {
+    position: relative;
+    z-index: 1;
+    
+    border-radius: 100%!important;
+    outline: 43px solid rgb(224, 224, 224)!important;
+    overflow: hidden;
+    
+    transition: all 0.5s;
+}
+
+.subsidebar-a-target {
+    position: relative;
+    z-index: 5;
+    color: rgb(71, 71, 71);
+    transition: all 0.4s;
+}

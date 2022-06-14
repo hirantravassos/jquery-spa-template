@@ -1,0 +1,49 @@
+#config {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.config-header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: var(--textcolor);
+}
+
+.config-select {
+    width: 100%;
+    padding: 3px;
+}
+
+.config-select-title {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    color: var(--textcolor);
+    margin-bottom: 15px;
+}
+
+.config-fields {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.config-fields-field {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3px;
+    color: var(--textcolor);
+}
+
+.config-fields-field label {
+    color: var(--textcolor);
+    width: 100%;
+    margin-bottom: 5px;
+}

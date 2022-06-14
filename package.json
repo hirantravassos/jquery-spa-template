@@ -1,0 +1,25 @@
+{
+  "name": "focus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hirantravassos/focus-front.git"
+  },
+  "author": "Hiran Travassos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hirantravassos/focus-front/issues"
+  },
+  "homepage": "https://github.com/hirantravassos/focus-front#readme",
+  "dependencies": {
+    "@iconify/utils": "^1.0.32",
+    "git": "^0.1.5",
+    "http-server": "^14.1.0",
+    "iconify": "^1.4.0"
+  }
+}

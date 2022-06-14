@@ -1,0 +1,64 @@
+.confirm {
+  width: 40%;
+  max-height: 80%;
+  font-size: .875rem;
+  pointer-events: auto;
+  background-color: rgba(255,255,255,0.97);
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  border-radius: .25rem;
+  position: fixed;
+  top: 90px;
+  left: 30%;
+  overflow: auto;
+}
+
+.confirm #confirm {
+  background-color: var(--bs-red);
+  color: white;
+  background: linear-gradient(to left, var(--bs-green) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 40%;
+  transition: all 0.2s ease-in-out;
+  margin-top: 50px;
+  margin-left: 9%;
+  border: none;
+}
+
+.confirm #confirm:hover {
+  background-position: left;
+  color: var(--bs-green);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px #408867;
+}
+
+.confirm #cancel {
+  background-color: var(--bs-red);
+  color: white;
+  background: linear-gradient(to left, var(--bs-red) 50%, var(--bs-body-bg) 50%) right;
+  background-size: 200%;
+  float: left;
+  width: 40%;
+  transition: all 0.2s ease-in-out;
+  margin-top: 50px;
+  border: none;
+}
+
+.confirm #cancel:hover {
+  background-position: left;
+  color: var(--bs-red);
+  font-weight: bold;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px rgb(227,88,101);
+}
+
+.confirm #confirm-text {
+  word-break: break-all;
+}
+
+#changelog table {
+}
+

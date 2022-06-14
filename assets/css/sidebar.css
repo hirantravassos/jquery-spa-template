@@ -1,0 +1,134 @@
+.sidebar {
+    position: fixed;
+    z-index: 2;
+
+    display: flex;
+    flex-direction:column;
+    background-color: rgb(240, 240, 240);
+    width: 150px;
+    min-height: 100vh;
+
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 3px;
+    border-style: solid;
+    border-color: grey;
+
+    box-shadow: 5px 5px 15px rgb(43, 43, 43);
+}
+
+.sidebar div:nth-child(1) {
+    height: 60px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar-logo {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-size: 36px;
+    color: var(--primary);
+    text-align: center;
+}
+
+.sidebar > li {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--primary);
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+    overflow-wrap: normal;
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+.sidebar li:hover a {
+    position: relative;
+    z-index: 4;
+
+    color: rgb(224, 224, 224);
+}
+.sidebar li:hover {
+    position: relative;
+    color: rgb(224, 224, 224);
+    z-index: 3;
+
+    transition: all 0.3s;
+}
+
+.sidebar li:hover .sidebar-icon {
+    position: relative;
+    z-index: 1;
+
+    /* color: var(--primary) */
+    
+    border-radius: 100%;
+    outline: 60px solid var(--primary);
+    overflow: hidden;
+    
+    transition: all 0.5s;
+}
+
+.sidebar-icon {
+    display: flex;
+    flex-direction: column;
+
+    align-self: center;
+
+    border-radius: 80%;
+    outline: 0px solid var(--primary);
+
+    font-size: 16px;
+    color: var(--primary);
+
+    padding: 1px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+
+    transform: scale(1.5);
+    z-index: 1;
+
+    transition: all 0.3s;
+}
+
+.sidebar-icon-target {
+    position: relative;
+    z-index: 1;
+    
+    border-radius: 100%!important;
+    outline: 60px solid var(--primary)!important;
+    overflow: hidden;
+    
+    transition: all 0.5s;
+}
+
+.sidebar-a-target {
+    position: relative;
+    z-index: 4;
+    color: rgb(224, 224, 224);
+    transition: all 0.4s;
+}
+

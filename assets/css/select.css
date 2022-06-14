@@ -1,0 +1,78 @@
+.select {
+    /* display: inline-flex; */
+    flex-wrap: nowrap;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: white;
+    color: var(--primary);
+
+    position: relative;
+
+    /* width: 50%; */
+    padding: 10px;
+    margin: 0px;
+
+    border-radius: 5px;
+    outline: 1px solid rgba(71, 71, 71, 0.603);
+
+    transition: all 0.3s;
+}
+
+.select:hover {
+    background-color: var(--primary);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+
+    transition: all 0.3s;
+}
+
+.select:hover li {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    visibility: visible;
+
+    font-size: 16px;
+    font-weight: normal;
+
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+
+    border-radius: 5px;
+
+    transition: all 0.3s;
+}
+
+.select li {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+
+    visibility: collapse;
+
+    color: white;
+    font-size: 0px;
+    font-weight: normal;
+
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+
+    border-radius: 0px;
+
+    transition: all 0.3s;
+}
+
+.select li:hover {
+    background-color: white;
+    color: var(--primary);
+    font-weight: normal;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+}

@@ -21,7 +21,6 @@ function OnReadyRoutes() {
         if (newURL[1] == null) {return}
         if (newURL[2] == null) {return}
     } catch (error) {
-        console.log('No history')
         return
     }
 

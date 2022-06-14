@@ -1,0 +1,14 @@
+{
+    "1": {
+        "id":"1",
+        "name":"client",
+        "innertext":"Clientes",
+        "icon":"ph:users-duotone"
+    },
+    "2": {
+        "id":"2",
+        "name":"warehouse",
+        "innertext":"Estoque",
+        "icon":"ph:house-duotone"
+    }
+}

@@ -9,7 +9,7 @@ $(document).ready(async function () {
 
 	await CreatePage();
 	await CreateSidebar()
-	await CreateSubsidebar();
-	await OnReadyRoutes()
+	// await CreateSubsidebar();
+	// await OnReadyRoutes()
 	
 });

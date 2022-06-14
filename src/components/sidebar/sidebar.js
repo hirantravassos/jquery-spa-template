@@ -1,45 +1,51 @@
 async function CreateSidebar() {
-    $("#app").append(
-        "" +
-            `<div ` +
-            `id="sidebar" ` +
-            `class="sidebar">` +
-                `<div class="sidebar-logo">` +
-                `FOCUS ` +
-                `</div>`+
-            `</div>` 
-    );
 
-    const usernameId = GetCookie('usernameId')
-    await PopulateSidebar(usernameId)
-}
+    Init()
+    PopulateSidebar()
 
-async function PopulateSidebar(usernameId) {
-    const sidebar = await API(
-		'sidebar',
-		JSON.stringify({
-			username: usernameId
-		}),
-		'POST'
-	)
-
-    let icon = ''
-	$.each(sidebar, function (index, value) { 
-        let id = value.id
-        let title = value.title
-        let innertext = value.innertext
-        let icon = value.icon
-
-        $("#sidebar").append(
-            `     <li id="${id}" name="${title}">` +
-            `         <i id="${id}" name="${title}">` +
-            `         </i>` +
-            `           <span id="${id}" name="${title}" class="iconify sidebar-icon" data-icon="${icon}" data-inline="false"></span>`+
-            `           <a id="${id}" name="${title}">${innertext}</a>` +
-            `     </li>`
+    async function Init() {
+        const Logo = await GetLogo()
+        $("#app").append(
+            "" +
+                `<div ` +
+                `id="sidebar" ` +
+                `class="sidebar">` +
+                    `<div class="sidebar-logo">` +
+                    `<img src="${Logo}"> ` +
+                    `</div>`+
+                `</div>` 
         );
-	});
+    } 
+
+    async function PopulateSidebar() {
+        const sidebar = await $.getJSON(`${ftpUrl}/src/components/sidebar/sidebar.json`,
+            async function (data) {
+                return data
+            }
+        );
+    
+        console.log(sidebar)
+    
+        let icon = ''
+        $.each(sidebar, function (index, value) { 
+            let id = value.id
+            let name = value.name
+            let innertext = value.innertext
+            let icon = value.icon
+    
+            $("#sidebar").append(
+                `<li id="${id}" name="${name}">` +
+                `    <i id="${id}" name="${name}">` +
+                `    </i>` +
+                `      <span id="${id}" name="${name}" class="iconify sidebar-icon" data-icon="${icon}" data-inline="false"></span>`+
+                `      <a id="${id}" name="${name}">${innertext}</a>` +
+                `</li>`
+            );
+        });
+    }
 }
+
+
 
 $('#app').on('click','#sidebar > li',function(e){
     let sidebarName = ''

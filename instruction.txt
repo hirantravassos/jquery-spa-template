@@ -5,7 +5,10 @@ Project Structure:
     index.html: Should never be changed, unless utimately necessary, it is a SPA.
 
 CSS:
+    Icons are provided by iconify class, use data-icon within json: https://icones.netlify.app/
+
     Colors: Within "root.css" file you might find the colors variables, change at will.
+
     They are divided by components, so you may find style of input, navbar, sidebar, select, etc.
     Again, bootstrap unused, you should change its styles only if you are confident about your skills.
 

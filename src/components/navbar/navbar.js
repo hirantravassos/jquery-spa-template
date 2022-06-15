@@ -1,4 +1,4 @@
-function CreateNavBar() {
+async function CreateNavBar() {
     $("#page").append(
         "" +
             `<div ` +

@@ -1,24 +1,10 @@
-function CreatePage() {
-    if ($('#page').length > 0) {
-        $('#page').hide(300)
-        CreatePageElements()
-    } else {
-        CreatePageElements()
-    }
+async function CreatePage() {
+	await CreatePageElements();
+    await CreateNavBar();
+    await CreateModule();
+    await CreateLogoPage();
 
-}
-
-function CreatePageElements(){
-    setTimeout(function(){
-        try {
-            $('#page').remove()
-        } catch (error) {}
-
-        $('#app').append(
-            `<div id="page" class="page">`+
-            `</div>`
-        );
-        CreateNavBar()
-        CreateModule()
-    },350)
+	async function CreatePageElements() {
+		$("#app").append(`<div id="page" class="page">` + `</div>`);
+	}
 }

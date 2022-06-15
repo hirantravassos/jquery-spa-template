@@ -1,15 +1,13 @@
 $(document).ready(async function () {
 	//TEMPORARY
-    await GetLogin(
+	await GetLogin(
 		JSON.stringify({
-			username: 'hirantravassos',
-			password: '123'
+			username: "hirantravassos",
+			password: "123",
 		})
 	);
 
+	await CreateSidebar();
 	await CreatePage();
-	await CreateSidebar()
-	// await CreateSubsidebar();
-	// await OnReadyRoutes()
-	
+	await OnReadyRoutes();
 });

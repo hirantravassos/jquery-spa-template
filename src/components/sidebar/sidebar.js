@@ -1,7 +1,8 @@
 async function CreateSidebar() {
 
-    Init()
-    PopulateSidebar()
+    await Init()
+    await PopulateSidebar()
+    await CreateSubsidebar()
 
     async function Init() {
         const Logo = await GetLogo()
@@ -17,71 +18,72 @@ async function CreateSidebar() {
         );
     } 
 
-    async function PopulateSidebar() {
-        const sidebar = await $.getJSON(`${ftpUrl}/src/components/sidebar/sidebar.json`,
-            async function (data) {
-                return data
-            }
+    async function SidebarItem(id,name,innertext,icon) {
+        $("#sidebar").append(
+            `<li id="${id}" name="${name}">` +
+            `    <i id="${id}" name="${name}">` +
+            `    </i>` +
+            `      <span id="${id}" name="${name}" class="iconify sidebar-icon" data-icon="${icon}" data-inline="false"></span>`+
+            `      <a id="${id}" name="${name}">${innertext}</a>` +
+            `</li>`
         );
-    
-        console.log(sidebar)
-    
-        let icon = ''
-        $.each(sidebar, function (index, value) { 
-            let id = value.id
-            let name = value.name
-            let innertext = value.innertext
-            let icon = value.icon
-    
-            $("#sidebar").append(
-                `<li id="${id}" name="${name}">` +
-                `    <i id="${id}" name="${name}">` +
-                `    </i>` +
-                `      <span id="${id}" name="${name}" class="iconify sidebar-icon" data-icon="${icon}" data-inline="false"></span>`+
-                `      <a id="${id}" name="${name}">${innertext}</a>` +
-                `</li>`
-            );
-        });
+    }
+
+    async function PopulateSidebar() {
+        SidebarItem("0","template","Template","ph:users-duotone")
     }
 }
 
 
 
 $('#app').on('click','#sidebar > li',function(e){
-    let sidebarName = ''
+    let sidebarItem = ''
     if (e.target.tagName != 'LI' && e.target.tagName != 'A') {
-        sidebarName = $(e.target).parent().attr('name')
+        sidebarItemId = $(e.target).parent().attr('id')
     } else {
-        sidebarName = $(e.target).attr('name')
+        sidebarItemId = $(e.target).attr('id')
     }
-    GetSidebarItems(sidebarName,'overview',true)
+
+    GetSidebarRelatedItems(sidebarItemId,'1',true)
 })
 
-function GetSidebarItems(sidebarName,subsidebarName,setRoute) {
-    $(`#sidebar li svg`).removeClass('sidebar-icon-target')
-    $(`#sidebar li a`).removeClass('sidebar-a-target')
-    $(`#sidebar li`).removeClass('active')
+function GetSidebarRelatedItems(sidebarItemId,subsidebarItemId,setRoute,unselectAll=false) {
+    if (unselectAll) {
+		SelectItem('')
+		return
+	} else {
+		SelectItem(sidebarItemId)
+	}
 
-    $(`#sidebar li[name=${sidebarName}] svg`).addClass('sidebar-icon-target')
-    $(`#sidebar li[name=${sidebarName}] a`).addClass('sidebar-a-target')
-    $(`#sidebar li[name=${sidebarName}]`).addClass('active')
+    GetSubsidebarItem(sidebarItemId,subsidebarItemId,setRoute)
 
-    const subsidebar = $(".subsidebar");
-	$.each(subsidebar, function (index, value) {
-		$(`#${value.id}`).animate(
-			{
-				left: "0",
-			},
-			150
-		);
-	});
-	$(`#subsidebar-${sidebarName}`).animate(
-		{
-			left: "150",
-		},
-		150
-	);
+    function SelectItem(sidebarItemId) {
+        $(`#sidebar li svg`).removeClass('sidebar-icon-target')
+        $(`#sidebar li a`).removeClass('sidebar-a-target')
+        $(`#sidebar li`).removeClass('active')
 
-    GetModule()
-    GetSubsidebar(sidebarName,subsidebarName,setRoute)
+        const subsidebar = $(".subsidebar");
+        $.each(subsidebar, function (index, value) {
+            $(`#${value.id}`).animate(
+                {
+                    left: "0",
+                },
+                150
+            );
+        });
+
+        if (sidebarItemId === '') {return}
+
+        $(`#sidebar li[id=${sidebarItemId}] svg`).addClass('sidebar-icon-target')
+        $(`#sidebar li[id=${sidebarItemId}] a`).addClass('sidebar-a-target')
+        $(`#sidebar li[id=${sidebarItemId}]`).addClass('active')
+
+        const sidebarItemName = $(`.sidebar li#${sidebarItemId}`).attr("name")
+        $(`#subsidebar-${sidebarItemName}`).animate(
+            {
+                left: "150",
+            },
+            150
+        );
+    }
 }

@@ -1,42 +1,65 @@
-function Routes(sidebar, subsidebar, sidebarText, subsidebarText) {
-    SetCookie("sidebar", sidebar, "1");
-    SetCookie("subsidebar", subsidebar, "1");
-    
-    newUrl = sidebar + "#" + subsidebar;
+function Routes(
+	sidebarItemId,
+	subsidebarItemId,
+	sidebarItemName,
+	subsidebarItemName
+) {
+	SetCookie("sidebar", sidebarItemId, "1");
+	SetCookie("subsidebar", subsidebarItemId, "1");
 
-    $("title").text(sidebarText + " - " + subsidebarText);
-    history.pushState({}, null, `#${newUrl}`);
+	if (sidebarItemName === "logo") {
+		newUrl = sidebarItemName;
+		$("title").text(sidebarItemName);
+	} else {
+		newUrl = sidebarItemName + "/" + subsidebarItemName;
+		$("title").text(sidebarItemName + " - " + subsidebarItemName);
+	}
+
+	history.pushState({}, null, `#/${newUrl}`);
 }
 
 function OnReadyRoutes() {
-    // history.pushState({}, null, `${ftpUrl}`);
+	const newURL = String(window.location.hash).split("/");
+	const sidebarItemName = newURL[1];
 
-    let newURL = window.location.hash;
-    newURL = newURL.split("#");
+    if (sidebarItemName === 'logo') {
+        DisplayLogo()
+    } else {
+        const sidebarItemId = $(`.sidebar li[name="${sidebarItemName}"] a`).attr(
+            "id"
+        );
+        const subsidebarItemName = newURL[2];
+        const subsidebarItemId = $(
+            `.subsidebar li[name="${subsidebarItemName}"]`
+        ).attr("id");
 
-    const sidebar = newURL[1];
-    const subsidebar = newURL[2];
-
-    try {
-        if (newURL[1] == null) {return}
-        if (newURL[2] == null) {return}
-    } catch (error) {
-        return
+        setTimeout(function () {
+            GetSidebarRelatedItems(sidebarItemId, subsidebarItemId, false);
+        }, 500);
     }
 
-    setTimeout(function () {
-        GetSidebarItems(sidebar,subsidebar);
-    }, 500);
+
 }
 
 $(window).on("popstate", function (e) {
-    let newURL = window.location.hash;
-    newURL = newURL.split("#");
+	const newURL = String(window.location.hash).split("/");
+	const sidebarItemName = newURL[1];
 
-    const sidebar = newURL[1];
-    const subsidebar = newURL[2];
+	if (sidebarItemName === "logo") {
+		window.location.hash = "#/" + sidebarItemName;
+        DisplayLogo()
+	} else {
+		const subsidebarItemName = newURL[2];
+		window.location.hash =
+			"#/" + sidebarItemName + "/" + subsidebarItemName;
 
-    window.location.hash = '#'+ sidebar + '#' + subsidebar
+		const sidebarItemId = $(
+			`.sidebar li[name="${sidebarItemName}"] a`
+		).attr("id");
+		const subsidebarItemId = $(
+			`.subsidebar li[name="${subsidebarItemName}"]`
+		).attr("id");
 
-    GetSidebarItems(sidebar,subsidebar);
+		GetSidebarRelatedItems(sidebarItemId, subsidebarItemId);
+	}
 });

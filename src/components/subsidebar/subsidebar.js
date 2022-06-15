@@ -1,89 +1,129 @@
 async function CreateSubsidebar() {
-	const sidebarItems = $(`div#sidebar li`);
+	await Init();
+	await PopulateSubsidebar();
 
-	$.each(sidebarItems, async function (index, value) {
-		let subsidebarName = $(value).attr("name");
-		let subsidebarText = $(value).text();
+	async function Init() {
+		const sidebarItems = $(`div#sidebar li`);
 
-		$("#app").append(
-			"" +
-				`<div ` +
-				`id="subsidebar-${subsidebarName}" ` +
-				`class="subsidebar">` +
-				`<div class="subsidebar-title">` +
-				`${subsidebarText}` +
-				`</div>` +
-				`</div>`
-		);
+		$.each(sidebarItems, async function (index, value) {
+			let sidebarName = $(value).attr("name");
+			let sidebarText = $(value).text();
 
-		const subsidebarItems = await $.getJSON(
-			`${ftpUrl}/src/components/subsidebar/items/subsidebar-${subsidebarName}.json`,
-			async function (data) {
-				return data;
-			}
-		);
-
-		$.each(subsidebarItems, function (index, value) {
-			let sClass = "";
-			let id = value.id;
-			let title = value.title;
-			let innertext = value.text;
-			let icon = value.icon;
-
-			if (title == "config") {
-				icon = `icon-park-twotone:setting-two`;
-				sClass = "subsidebar-config";
-			}
-
-			$(`#subsidebar-${subsidebarName}`).append(
-				`<li id="${id}" name="${title}" class="${sClass}">` +
-					`   <i id="${id}" name="${title}">` +
-					`   </i>` +
-					`       <span ` +
-					`           id="${id}" ` +
-					`           name="${title}" ` +
-					`
-                                            class="iconify subsidebar-icon" ` +
-					`           data-icon="${icon}" data-inline="false">` +
-					`           </span>` +
-					`   <a id="${id}" name="${title}">${innertext}</a>` +
-					`</li>`
+			$("#app").append(
+				"" +
+					`<div ` +
+					`	id="subsidebar-${sidebarName}" ` +
+					`	class="subsidebar">` +
+					`<div class="subsidebar-title">` +
+					`${sidebarText}</div>` +
+					`</div>`
 			);
 		});
-	});
+	}
+
+	async function SubsidebarItem(
+		parent,
+		id,
+		name,
+		icon,
+		innertext,
+		isBottomIndex
+	) {
+		let setClass = "";
+		if (isBottomIndex) {
+			setClass = "subsidebar-config";
+		}
+		// console.log("$(`#subsidebar-"+parent+"`)")
+
+		$(`#subsidebar-${parent}`).append(
+			`<li id="${id}" name="${name}" class="${setClass}">` +
+				`   <i id="${id}" name="${name}">` +
+				`   </i>` +
+				`       <span ` +
+				`           id="${id}" ` +
+				`           name="${name}" ` +
+				`           class="iconify subsidebar-icon" ` +
+				`           data-icon="${icon}" data-inline="false">` +
+				`           </span>` +
+				`   <a id="${id}" name="${name}">${innertext}</a>` +
+				`</li>`
+		);
+	}
+
+	async function PopulateSubsidebar() {
+		SubsidebarItem(
+			"template",
+			"1",
+			"demo-1",
+			"ph:presentation-chart-duotone",
+			"Template Child 1",
+			false
+		);
+		SubsidebarItem(
+			"template",
+			"2",
+			"demo-2",
+			"icon-park-twotone:add-one",
+			"Template Child 2",
+			false
+		);
+		SubsidebarItem(
+			"template",
+			"3",
+			"demo-3",
+			"icon-park-twotone:align-text-both-one",
+			"Template Child 3",
+			false
+		);
+		SubsidebarItem(
+			"template",
+			"4",
+			"demo-4",
+			"icon-park-twotone:setting-two",
+			"Template Child 4",
+			true
+		);
+	}
 }
 
 $("#app").on("click", ".subsidebar li", function (e) {
-	let subsidebarName = "";
+	let subsidebarItemId = "";
 	if (e.target.tagName != "LI" && e.target.tagName != "A") {
-		subsidebarName = $(e.target).parent().attr("name");
+		subsidebarItemId = $(e.target).parent().attr("id");
 	} else {
-		subsidebarName = $(e.target).attr("name");
+		subsidebarItemId = $(e.target).attr("id");
 	}
 
-	const sidebarName = $("#sidebar .active").attr("name");
-	GetSubsidebar(sidebarName, subsidebarName, true);
+	const sidebarItem = $("#sidebar .active").attr("id");
+	GetSubsidebarItem(sidebarItem, subsidebarItemId, true);
 });
 
-function GetSubsidebar(sidebarName, subsidebarName, setRoute) {
-	$(`.subsidebar li svg`).removeClass("subsidebar-icon-target");
-	$(`.subsidebar li a`).removeClass("subsidebar-a-target");
-	$(`.subsidebar li`).removeClass("active");
-
-	$(`.subsidebar li[name=${subsidebarName}] svg`).addClass(
-		"subsidebar-icon-target"
-	);
-	$(`.subsidebar li[name=${subsidebarName}] a`).addClass(
-		"subsidebar-a-target"
-	);
-	$(`.subsidebar li[name=${subsidebarName}]`).addClass("active");
-
-	const sidebarText = $(`#sidebar li[name=${sidebarName}]`).text();
-	const subsidebarText = $(`#subsidebar-${sidebarName} .active a`).text();
-
-	if (setRoute) {
-		Routes(sidebarName, subsidebarName, sidebarText, subsidebarText);
+function GetSubsidebarItem(sidebarItemId, subsidebarItemId, setRoute, unselectAll=false) {
+	if (unselectAll) {
+		SelectItem('')
+		return
+	} else {
+		SelectItem(subsidebarItemId)
 	}
 	
-	DisplayModule(subsidebarName);
+	const sidebarItemName = $(`.sidebar li#${sidebarItemId} a`).attr("name");
+	const subsidebarItemName = $(`.subsidebar li#${subsidebarItemId}`).attr("name");
+
+	if (setRoute) {
+		Routes(sidebarItemId, subsidebarItemId, sidebarItemName, subsidebarItemName);
+	}
+
+	DisplayModule(subsidebarItemName);
+
+	function SelectItem(subsidebarItemId) {
+		$(`.subsidebar li svg`).removeClass("subsidebar-icon-target");
+		$(`.subsidebar li a`).removeClass("subsidebar-a-target");
+		$(`.subsidebar li`).removeClass("active");
+
+		if (subsidebarItemId === '') {return}
+	
+		$(`.subsidebar li#${subsidebarItemId} svg`).addClass("subsidebar-icon-target");
+		$(`.subsidebar li#${subsidebarItemId} a`).addClass("subsidebar-a-target");
+		$(`.subsidebar li#${subsidebarItemId}`).addClass("active");
+	}
 }

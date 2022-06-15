@@ -32,6 +32,21 @@
     margin-right: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
+
+    cursor: pointer;
+
+    transition: all 0.4s;
+}
+
+.sidebar-logo:hover {
+    transform: scale(1.2);
+
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    transition: all 0.4s;
 }
 
 .sidebar-logo img {

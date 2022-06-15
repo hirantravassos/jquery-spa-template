@@ -1,24 +1,22 @@
-#new {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.new-header {
+.module-title {
     display: flex;
     width: 100%;
-    margin-bottom: 30px;
     font-size: 18px;
     color: var(--textcolor);
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
-.new-select-title {
+.module-subtitle {
     display: flex;
     width: 100%;
     font-size: 16px;
     color: var(--textcolor);
     margin-bottom: 15px;
+    text-transform: none;
 }
+
 
 .new-fields {
     width: 100%;

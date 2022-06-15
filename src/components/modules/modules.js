@@ -1,13 +1,19 @@
-function CreateModule() {
+async function CreateModule() {
 	$("#page").append(`<div id="module" class="module"></div>`);
-	// $("#module").hide();
+
+  await GetCustomModules()
 }
 
-function DisplayModule(layoutName) {
+function DisplayModule() {
+  $(`#logo`).hide(350)
+  $(`#module`).show(350)
+
+  const sidebarItemName = $(`.sidebar .active a`).attr("name");
+	const subsidebarItemName = $(`.subsidebar .active`).attr("name");
+  const constructorTag = `#${sidebarItemName}#${subsidebarItemName}`
+
 	$(`#module > div`).hide(350);
-	setTimeout(() => {
-		$(`#module #${layoutName}`).show(350);
-	}, 350);
+	$(`#module div[constructor="${constructorTag}"]`).show(350)
 }
 
 //SUBMIT FORM
@@ -17,7 +23,7 @@ $("body").on("submit", "form", function (e) {
 	console.log(sidebarActive, subsidebarActive);
 
 	e.preventDefault();
-	const formData = JSON.stringify(GetFormData($("#new form")));
+	const formData = JSON.stringify(GetFormData($("form")));
 	console.log(formData);
 
 	if (subsidebarActive === "new") {
@@ -30,8 +36,3 @@ $("body").on("submit", "form", function (e) {
 		$("#new form").show(350);
 	}, 1500);
 });
-
-function GetModule(moduleName) {
-	$("#module").empty(); // don't remove
-  
-}

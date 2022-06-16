@@ -16,9 +16,24 @@ function DisplayModule() {
 	$(`#module div[constructor="${constructorTag}"]`).show(350);
 }
 
-function GetSelectedModule(moduleById) {
+async function PopulateModuleWithApi(moduleById,ApiPath,id) {
 	$(`#logo`).hide(350);
 	$(`#module`).show(350);
+
+	const requestData = JSON.stringify(JSON.parse(`{"id":"${id}"}`))
+	const apiData = await API(ApiPath,requestData)
+
+	let isInputAtDestination = ''
+	let targetObj = ''
+	$.each(apiData, function (index, value) { 
+		 isInputAtDestination = $(`#${moduleById} input[name="${index}"]`).length
+		 targetObj = $(`#${moduleById} input[name="${index}"]`)
+
+		 if (isInputAtDestination > 0) {
+			$(targetObj).val(value)
+		 }
+	});
+
 	$(`#module > div`).hide(350);
 	$(`#module div#${moduleById}`).show(350);
 }

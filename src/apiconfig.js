@@ -11,6 +11,8 @@ async function API(path,request,type) {
 		return
 	}
 
+	if (!isProduction) {console.log('API-Request: ',request)}
+
     const response = await $.ajax({
 		url: `${urlPath}`,
 		headers: {
@@ -22,7 +24,7 @@ async function API(path,request,type) {
 		dataType: "json",
 		data: request,
 		success: function (data) {
-			console.log(data)
+			if (!isProduction) {console.log('API-Response: ',data)}
 			return data;
 		},
 	});

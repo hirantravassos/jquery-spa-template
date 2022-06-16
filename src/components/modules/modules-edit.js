@@ -1,39 +1,38 @@
-//Create your modules here:
+/*
+Create your modules in this file!
+
+    Create modules with those functions:
+        - CreateSidebarRelatedModule(sidebarItemName,subsidebarItemName,id)
+        - CreateTableRelatedModule(tableName)
+            Obs: CreateTableRelatedModule is an "async function" that returns an 
+                new id that can be used for creating a hidden module form related
+                to the "onclick" event of the table itself.
+
+    Elements that can be used inside modules bellow:
+        Titles:
+            - ModuleTitle(parentId, innerText)
+            - ModuleSubtitle(parentId, innerText)
+
+        Tables:
+            - ModuleTable(parentId,apiPath,tableFields,onClickPopulateWithThisAPI)
+
+        Forms:
+            - ModuleInput(parentId,title,name,width,placeholder,mask,inputType)
+            - ModuleFormControl(parentId)
+
+        Footers:
+            - ModuleFooter(parentId, innerText)
+*/
+
 async function GetCustomModules() {
-	CreateSidebarRelatedModule("template", "demo-1", "module-1");
-	ModuleBody1("module-1");
-
-    CreateSidebarRelatedModule("template", "demo-2", "module-2");
-    ModuleBody2("module-2");
-
-    CreateSidebarRelatedModule("template", "demo-3", "module-3");
-    ModuleBody3("module-3");
+    CreateSidebarRelatedModule("template", "demo-1", "module-client");
+    ModuleBody1("module-client");
 
     const parentTableId = await CreateTableRelatedModule("client");
     ModuleTableBody1(parentTableId);
 }
 
-function ModuleBody1(parentId) {
-    ModuleTitle(parentId,"I'm a title")
-    ModuleSubtitle(parentId,"I'm a subtitle")
-    ModuleInput(parentId,"I'm a Input 1","input1",100,"Placeholder 1","000.000","number")
-    ModuleInput(parentId,"I'm a Input 2","input2",50,"Placeholder 2","","text")
-    ModuleInput(parentId,"I'm a Input 3","input3",50,"Placeholder 3","","number")
-    ModuleFooter(parentId,"I'm a Footer")
-}
-
-function ModuleBody2(parentId) {
-    ModuleTitle(parentId,"I'm a title")
-    ModuleSubtitle(parentId,"I'm a subtitle")
-    ModuleInput(parentId,"I'm a Input 1","input1",100,"Placeholder 1","000.000","number")
-    ModuleInput(parentId,"I'm a Input 2","input2",50,"Placeholder 2","","text")
-    ModuleInput(parentId,"I'm a Input 3","input3",50,"Placeholder 3","","number")
-    ModuleInput(parentId,"I'm a Input 4","input4",100,"Placeholder 4","","number")
-    ModuleInput(parentId,"I'm a Input 5","input5",100,"Placeholder 5","","number")
-    ModuleFormControl(parentId)
-}
-
-async function ModuleBody3(parentId) {
+async function ModuleBody1(parentId) {
     ModuleTitle(parentId,"I'm a title")
 
     const onClickGotoThis = "module-2"
@@ -43,15 +42,11 @@ async function ModuleBody3(parentId) {
     `   "innerText":"Nome",`+
     `   "width":"40"`+
     `   },`+
-    `"cpf":{`+
-    `   "innerText":"CPF",`+
-    `   "width":"20"`+
-    `   },`+
     `"rg":{`+
     `   "innerText":"RG",`+
     `   "width":"20"`+
     `   },`+
-    `"cellphone":{`+
+    `"cellphone2":{`+
     `   "innerText":"Contato",`+
     `   "width":"20"`+
     `   }`+
@@ -60,5 +55,13 @@ async function ModuleBody3(parentId) {
 }
 
 async function ModuleTableBody1(parentId) {
+    ModuleTitle(parentId,"Active when clicked on table row")
+    ModuleSubtitle(parentId,"Subtitle test...")
 
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"CPF","cpf",50,"000.000.000-00","000.000.000-00","any")
+    ModuleInput(parentId,"RG","rg",50,"00.000.000-0","00.000.000-0","any")
+    ModuleInput(parentId,"Data Nascimento","birthday",25,"00/00/0000","00/00/0000","any")
+
+    ModuleFormControl(parentId)
 }

@@ -1,3 +1,5 @@
+const isProduction = false
+
 $(document).ready(async function () {
 	//TEMPORARY
 	await GetLogin(
@@ -10,4 +12,8 @@ $(document).ready(async function () {
 	await CreateSidebar();
 	await CreatePage();
 	await OnReadyRoutes();
+
+	setTimeout(() => {
+		CheckForErrors()
+	}, 1000)
 });

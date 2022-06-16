@@ -56,7 +56,7 @@ async function CreateSubsidebar() {
 			"1",
 			"demo-1",
 			"ph:presentation-chart-duotone",
-			"Template Child 1",
+			"Template SubItem 1",
 			false
 		);
 		SubsidebarItem(
@@ -64,7 +64,7 @@ async function CreateSubsidebar() {
 			"2",
 			"demo-2",
 			"icon-park-twotone:add-one",
-			"Template Child 2",
+			"Template SubItem 2",
 			false
 		);
 		SubsidebarItem(
@@ -72,7 +72,7 @@ async function CreateSubsidebar() {
 			"3",
 			"demo-3",
 			"icon-park-twotone:align-text-both-one",
-			"Template Child 3",
+			"Template SubItem 3",
 			false
 		);
 		SubsidebarItem(
@@ -80,7 +80,7 @@ async function CreateSubsidebar() {
 			"4",
 			"demo-4",
 			"icon-park-twotone:setting-two",
-			"Template Child 4",
+			"Template SubItem 4",
 			true
 		);
 	}

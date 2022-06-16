@@ -97,7 +97,7 @@
     /* color: rgb(71, 71, 71); */
     
     border-radius: 100%;
-    outline: 43px solid rgb(224, 224, 224);
+    outline: 60px solid rgb(224, 224, 224);
     overflow: hidden;
     
     transition: all 0.5s;
@@ -130,7 +130,7 @@
     z-index: 1;
     
     border-radius: 100%!important;
-    outline: 43px solid rgb(224, 224, 224)!important;
+    outline: 60px solid rgb(224, 224, 224)!important;
     overflow: hidden;
     
     transition: all 0.5s;

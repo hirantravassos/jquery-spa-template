@@ -1,19 +1,26 @@
 async function CreateModule() {
 	$("#page").append(`<div id="module" class="module"></div>`);
 
-  await GetCustomModules()
+	await GetCustomModules();
 }
 
 function DisplayModule() {
-  $(`#logo`).hide(350)
-  $(`#module`).show(350)
+	$(`#logo`).hide(350);
+	$(`#module`).show(350);
 
-  const sidebarItemName = $(`.sidebar .active a`).attr("name");
+	const sidebarItemName = $(`.sidebar .active a`).attr("name");
 	const subsidebarItemName = $(`.subsidebar .active`).attr("name");
-  const constructorTag = `#${sidebarItemName}#${subsidebarItemName}`
+	const constructorTag = `#${sidebarItemName}#${subsidebarItemName}`;
 
 	$(`#module > div`).hide(350);
-	$(`#module div[constructor="${constructorTag}"]`).show(350)
+	$(`#module div[constructor="${constructorTag}"]`).show(350);
+}
+
+function GetSelectedModule(moduleById) {
+	$(`#logo`).hide(350);
+	$(`#module`).show(350);
+	$(`#module > div`).hide(350);
+	$(`#module div#${moduleById}`).show(350);
 }
 
 //SUBMIT FORM

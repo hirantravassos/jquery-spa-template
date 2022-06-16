@@ -106,7 +106,7 @@
     /* color: var(--primary) */
     
     border-radius: 100%;
-    outline: 60px solid var(--primary);
+    outline: 70px solid var(--primary);
     overflow: hidden;
     
     transition: all 0.5s;
@@ -139,7 +139,7 @@
     z-index: 1;
     
     border-radius: 100%!important;
-    outline: 60px solid var(--primary)!important;
+    outline: 70px solid var(--primary)!important;
     overflow: hidden;
     
     transition: all 0.5s;

@@ -22,6 +22,7 @@ async function API(path,request,type) {
 		dataType: "json",
 		data: request,
 		success: function (data) {
+			console.log(data)
 			return data;
 		},
 	});

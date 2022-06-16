@@ -13,24 +13,34 @@
     box-shadow: 2px 2px 5px grey;
 }
 
+.module > div {
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
 .module-header {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     margin-bottom: 30px;
     font-size: 18px;
     color: var(--textcolor);
+    padding: 3px;
 }
 
 .module-body {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 30px;
     color: var(--textcolor);
 }
 
 .module-footer {
     display: flex;
     width: 100%;
-    margin-bottom: 30px;
+    margin-top: 25px;
     color: var(--textcolor);
+    padding: 3px;
 }
+

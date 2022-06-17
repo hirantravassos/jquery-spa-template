@@ -87,7 +87,7 @@ async function ModuleTable(
         if (!isFieldAvaliable) {
             const alertText =
                 `ERROR!! \n` +
-                `Table: ${parentId}; \n` +
+                `Module: ${parentId}; \n` +
                 `API: ${apiUrl}/${apiPath}; \n` +
                 `Field: ${allowedField}; \n \n` +
                 `This field is not avaliable through this api data. \n` +

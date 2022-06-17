@@ -32,8 +32,9 @@ async function API(path,request,type) {
 }
 
 async function GetLogin(request) {
+	const apiLoginPath = 'login'
     const loginResponse = await $.ajax({
-		url: `${apiUrl}/login`,
+		url: `${apiUrl}/${apiLoginPath}`,
 		headers: {
 			"Content-Type": "application/json",
 		},

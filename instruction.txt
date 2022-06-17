@@ -23,6 +23,12 @@ SRC:
         A perfect and round world, the application should start here. In case of browser reload event 
         it might start from "routes.js" event listeners.
 
+    error.js:
+        Anything off you might have done wrong with the template itself will be shown here.
+        Some errors fix are completely optional.
+        For production set the "index.js" "isProduction" variable to TRUE, it will hide any
+        console errors from this file.
+
     apiconfig.js: 
         GetLogin: 
             As usual, get the token here, set cookies there.

@@ -1,60 +1,163 @@
-async function CreateModule() {
-	$("#page").append(`<div id="module" class="module"></div>`);
+/*
+Create your modules in this file!
 
-	await GetCustomModules();
+    Create modules with those functions:
+        - CreateSidebarRelatedModule(sidebarItemName,subsidebarItemName,id)
+            Usage:
+                CreateSidebarRelatedModule(
+                    "sidebarItemName", 
+                    "subsidebarItemName", 
+                    "module-client"
+                );
+                ModuleBody1("desired-id");
+
+        - CreateTableRelatedModule(tableName)
+            Usage:
+                const parentTableId = await CreateTableRelatedModule("desired-id");
+                ModuleTitle(parentTableId, "I'm and example");
+            Obs: CreateTableRelatedModule is an "async function" that returns an 
+                new id that can be used for creating a hidden module form related
+                to the "onclick" event of the table itself.
+
+        IMPORTANT: For spacing id name, always use "-".
+
+    Elements that can be used inside modules bellow:
+        Titles:
+            - ModuleTitle(parentId, innerText)
+            - ModuleSubtitle(parentId, innerText)
+
+        Tables:
+            - ModuleTable(parentId,apiPath,tableFields,onClickPopulateWithThisAPI)
+                IMPORTANT: tableFields needs to be a JSON Stringify object.
+                    Always set first prop with the same name of your DB field
+                    you wish to show, otherwise it won't show up!
+                    
+                    Example as bellow:
+                        {
+                            db-field: {
+                                innerText":"As desired",
+                                width":"100"
+                            }
+                        }
+                    *db-field = DB Table Field Name!!
+
+                IMPORTANT 2: Always provide a field called exactly "id"!!
+                    It will be used to populate the hidden related module form
+                    if "request.body.id" exists. Always a POST API callout.
+
+                IMPORTANT 3: Only inputs set with DB field name will be 
+                    populated as bellow:
+
+                    ModuleInput(
+                        parentId,
+                        "Name",
+                        "DB FIELD NAME",
+                        100,
+                        "Nome completo",
+                        "",
+                        "text"
+                    )
+
+        Forms:
+            - ModuleInput(parentId,title,name,width,placeholder,mask,inputType)
+                IMPORTANT: Never uses inputType="number", let the mask do its job.
+
+            - ModuleFormControl(parentId)
+                This function call buttons to submit and go back, usually
+                necessary to form, this object is NOT mandatory.
+
+        Footers:
+            - ModuleFooter(parentId, innerText)
+*/
+
+async function GetCustomModules() {
+    // CreateSidebarRelatedModule(sidebarItemName,subsidebarItemName,id)
+    CreateSidebarRelatedModule("template", "demo-1", "example-1");
+    //You can create form with personalized function as this!
+    ModuleExample1("example-1"); 
+
+    CreateSidebarRelatedModule("template-2", "demo-1", "example-2");
+    ModuleExample2("example-2"); 
+
+    // CreateTableRelatedModule(tableName)
+    const parentTableId = await CreateTableRelatedModule("client");
+    ModuleTableBody1(parentTableId);
 }
 
-function DisplayModule() {
-	$(`#logo`).hide(350);
-	$(`#module`).show(350);
+//You can create form with personalized function as this!
+async function ModuleExample1(parentId) {
+    ModuleTitle(parentId,"Module Example 1")
+    ModuleSubtitle(parentId,"Subtitle example...")
 
-	const sidebarItemName = $(`.sidebar .active a`).attr("name");
-	const subsidebarItemName = $(`.subsidebar .active`).attr("name");
-	const constructorTag = `#${sidebarItemName}#${subsidebarItemName}`;
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"CPF","cpf",50,"000.000.000-00","000.000.000-00","any")
+    ModuleInput(parentId,"RG","rg",50,"00.000.000-0","00.000.000-0","any")
+    ModuleInput(parentId,"Data Nascimento","birthday",25,"00/00/0000","00/00/0000","any")
 
-	$(`#module > div`).hide(350);
-	$(`#module div[constructor="${constructorTag}"]`).show(350);
+    ModuleFormControl(parentId)
 }
 
-async function PopulateModuleWithApi(moduleById,ApiPath,id) {
-	$(`#logo`).hide(350);
-	$(`#module`).show(350);
-
-	const requestData = JSON.stringify(JSON.parse(`{"id":"${id}"}`))
-	const apiData = await API(ApiPath,requestData)
-
-	let isInputAtDestination = ''
-	let targetObj = ''
-	$.each(apiData, function (index, value) { 
-		 isInputAtDestination = $(`#${moduleById} input[name="${index}"]`).length
-		 targetObj = $(`#${moduleById} input[name="${index}"]`)
-
-		 if (isInputAtDestination > 0) {
-			$(targetObj).val(value)
-		 }
-	});
-
-	$(`#module > div`).hide(350);
-	$(`#module div#${moduleById}`).show(350);
+async function ModuleExample2(parentId) {
+    $(`#${parentId}`).append(
+        `<div style="width:500px;height:500px">`+
+        '<canvas id="myChart" ></canvas>'+
+        `</div>`
+    )
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
 }
 
-//SUBMIT FORM
-$("body").on("submit", "#module form", function (e) {
-	const sidebarActive = $(".sidebar .active").attr("name");
-	const subsidebarActive = $(".subsidebar .active").attr("name");
-	console.log(sidebarActive, subsidebarActive);
+async function ModuleExampleTable1(parentId) {
+    const onClickPopulateWithThisAPI = "client-id"
+    const tableFields = `{`+
+    `"demo-field-1":{`+
+    `   "innerText":"Demo 1",`+
+    `   "width":"50"`+
+    `   },`+
+    `"demo-field-2":{`+
+    `   "innerText":"Demo 2",`+
+    `   "width":"50"`+
+    `   }`+
+    `}`
+    ModuleTable(parentId,'client-list',tableFields,onClickPopulateWithThisAPI)
+}
 
-	e.preventDefault();
-	const formData = JSON.stringify(GetFormData($("#module form")));
-	console.log(formData);
+async function ModuleTableBody1(parentId) {
+    ModuleTitle(parentId,"Active when clicked on table row")
+    ModuleSubtitle(parentId,"Subtitle test...")
 
-	if (subsidebarActive === "new") {
-		const path = `${sidebarActive}/${subsidebarActive}`;
-		// API(path,formData)
-	}
+    ModuleInput(parentId,"Name","name",100,"Nome completo","","text")
+    ModuleInput(parentId,"CPF","cpf",50,"000.000.000-00","000.000.000-00","any")
+    ModuleInput(parentId,"RG","rg",50,"00.000.000-0","00.000.000-0","any")
+    ModuleInput(parentId,"Data Nascimento","birthday",25,"00/00/0000","00/00/0000","any")
 
-	$("#new form").hide(350);
-	setTimeout(() => {
-		$("#new form").show(350);
-	}, 1500);
-});
+    ModuleFormControl(parentId)
+}

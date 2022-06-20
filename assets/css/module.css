@@ -10,7 +10,9 @@
     border-radius: 5px;
 
     width: 100%;
+    max-height: 90vh;
     box-shadow: 2px 2px 5px rgb(66, 66, 66);
+    overflow: auto;
 }
 
 .module > div {

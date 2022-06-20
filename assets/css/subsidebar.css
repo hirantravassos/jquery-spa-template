@@ -14,9 +14,9 @@
     border-right: 3px;
     border-left: 0px;
     border-style: solid;
-    border-color: grey;
+    border-color: var(--borders);
 
-    box-shadow: 5px 5px 15px var(--primary);
+    box-shadow: 5px 5px 15px rgb(66, 66, 66);
     transition: all 0.5s;
 }
 
@@ -39,10 +39,9 @@
     text-transform: uppercase;
 }
 
-.subsidebar-config {
+.subsidebar-bottom {
     flex-grow: 2;
     justify-content: flex-end;
-    margin-top: 52vh!important;
 }
 
 .subsidebar > li {

@@ -39,13 +39,13 @@ async function PopulateModuleWithApi(moduleById,ApiPath,id) {
 }
 
 //SUBMIT FORM
-$("body").on("submit", "form", function (e) {
+$("body").on("submit", "#module form", function (e) {
 	const sidebarActive = $(".sidebar .active").attr("name");
 	const subsidebarActive = $(".subsidebar .active").attr("name");
 	console.log(sidebarActive, subsidebarActive);
 
 	e.preventDefault();
-	const formData = JSON.stringify(GetFormData($("form")));
+	const formData = JSON.stringify(GetFormData($("#module form")));
 	console.log(formData);
 
 	if (subsidebarActive === "new") {

@@ -10,7 +10,7 @@
     border-radius: 5px;
 
     width: 100%;
-    box-shadow: 2px 2px 5px grey;
+    box-shadow: 2px 2px 5px rgb(66, 66, 66);
 }
 
 .module > div {

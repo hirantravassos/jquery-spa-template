@@ -1,19 +1,17 @@
-const isProduction = false
+const isProduction = false;
 
 $(document).ready(async function () {
-	//TEMPORARY
-	await GetLogin(
-		JSON.stringify({
-			username: "hirantravassos",
-			password: "123",
-		})
-	);
+	await CreateLogin();
+});
+
+async function LoggedIn() {
+	$('#app').empty()
 
 	await CreateSidebar();
 	await CreatePage();
 	await OnReadyRoutes();
 
 	setTimeout(() => {
-		CheckForErrors()
-	}, 1000)
-});
+		CheckForErrors();
+	}, 1000);
+}

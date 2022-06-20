@@ -16,7 +16,7 @@ async function API(path,request,type) {
     const response = await $.ajax({
 		url: `${urlPath}`,
 		headers: {
-			"x-access-token": `${token}`,
+			"token": `${token}`,
 			"username": `${usernameId}`,
 			"Content-Type": "application/json",
 		},

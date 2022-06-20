@@ -15,19 +15,27 @@ input {
     transition: all 0.2s;
 }  
 
-input:hover {
+input:hover, {
     outline: none;
-    box-shadow: 3px 3px 5px var(--primary);
+    box-shadow: 3px 3px 5px rgb(66, 66, 66);
 
     transition: all 0.2s;
 }   
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0px 1000px var(--primary) inset !important;
+    -webkit-text-fill-color: white!important;
+}
 
 input:focus {
     outline: none;
     background-color: var(--primary);
     color: white;
-    box-shadow: 3px 3px 5px var(--primary);
-    border-bottom: 3px solid rgb(107, 107, 107);
+    box-shadow: 3px 3px 5px rgb(66, 66, 66);
+    border-bottom: 3px solid var(--borders);
 
     margin-bottom: 0px;
 

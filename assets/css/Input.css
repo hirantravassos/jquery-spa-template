@@ -15,7 +15,7 @@ input {
     transition: all 0.2s;
 }  
 
-input:hover, {
+input:hover {
     outline: none;
     box-shadow: 3px 3px 5px rgb(66, 66, 66);
 
@@ -41,3 +41,65 @@ input:focus {
 
     transition: all 0.2s;
 }  
+
+.input-fields {
+    box-sizing: border-box;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+ .input-fields:focus-within { 
+    margin-bottom: 10px;
+    /* transition: all 0.2s; */
+}
+
+/* SPAN */
+ .input-fields > span {
+    position: relative;
+    box-sizing: border-box;
+    background-color: var(--module);
+    z-index: 4;
+    font-size: smaller;
+    /* top: 1px; */
+    display: inline-flex;
+    transform: scale(0.0);
+    transition: all 0.3s;
+}
+
+ .input-fields:focus-within span {
+    display: inline-flex;
+    width: auto;
+    /* background-color: red; */
+    outline-color: var(--primary);
+
+    transform: scale(1);
+    transition: all 0.3s;
+}
+
+/* INPUT */
+ .input-fields > input {
+    margin-bottom: 0px;
+    box-sizing: border-box;
+    outline: 1px;
+    outline-style: dotted;
+    outline-color: var(--primary);
+    outline-offset: 5px;
+    z-index: 3;
+    transition: all 0.3s ease-in-out;
+}
+
+ .input-fields > input:focus {
+    border: 1px solid var(--primary);
+    outline: 1px;
+    outline-style: solid;
+    outline-color: var(--textcolor);
+    transition: all 0.3s ease-in-out;
+}
+
+
+ input:focus::placeholder {
+    color: var(--primary);
+    transition: all 0.2s;
+}

@@ -6,19 +6,21 @@
 
     padding: 20px;
 
-    background-color: rgb(238, 237, 237);
+    background-color: var(--module);
     border-radius: 5px;
 
     width: 100%;
+    height: fit-content;
     max-height: 90vh;
     box-shadow: 2px 2px 5px rgb(66, 66, 66);
     overflow: auto;
 }
 
-.module > div {
+.module-div {
     display: flex;
     box-sizing: border-box;
     flex-wrap: wrap;
+    width:100%;
 }
 
 .module-header {

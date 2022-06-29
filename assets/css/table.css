@@ -42,7 +42,7 @@
     font-weight: normal;
     color: var(--primary);
     text-align: start;
-    text-transform: uppercase;
+    text-transform: capitalize;
     padding: 5px;
     border-bottom: 1px solid #d4d4d4;
     box-sizing: border-box;

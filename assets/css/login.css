@@ -14,11 +14,6 @@
     justify-content: center;
 }
 
-/* SIDEBAR */
-:root {
-    --login-sidebar: white;
-}
-
 .login-sidebar {
     background-color: var(--login-sidebar);
     flex: 2 0;
@@ -97,25 +92,11 @@
     color: var(--textcolor);
 }
 
-/* INPUTS */
-.login-sidebar .login-fields {
-    box-sizing: border-box;
-    padding-left: 6px;
-    padding-right: 6px;
-    margin-bottom: 10px;
-    transition: all 0.2s;
-}
-
-.login-sidebar .login-fields:focus-within { 
-    margin-bottom: 10px;
-    /* transition: all 0.2s; */
-}
-
-/* SPAN */
-.login-sidebar .login-fields > span {
+/* INPUT */
+.login-span {
     position: relative;
     box-sizing: border-box;
-    background-color: var(--login-sidebar);
+    background-color: var(--login-sidebar)!important;
     z-index: 4;
     font-size: smaller;
     /* top: 1px; */
@@ -124,7 +105,7 @@
     transition: all 0.3s;
 }
 
-.login-sidebar .login-fields:focus-within span {
+ .input-fields:focus-within .login-span {
     display: inline-flex;
     width: auto;
     /* background-color: red; */
@@ -132,32 +113,6 @@
 
     transform: scale(1);
     transition: all 0.3s;
-}
-
-/* INPUT */
-.login-sidebar .login-fields > input {
-    margin-bottom: 0px;
-    box-sizing: border-box;
-    outline: 1px;
-    outline-style: dotted;
-    outline-color: var(--primary);
-    outline-offset: 5px;
-    z-index: 3;
-    transition: all 0.3s ease-in-out;
-}
-
-.login-sidebar .login-fields > input:focus {
-    border: 1px solid var(--primary);
-    outline: 1px;
-    outline-style: solid;
-    outline-color: var(--textcolor);
-    transition: all 0.3s ease-in-out;
-}
-
-
-.login-sidebar input:focus::placeholder {
-    color: var(--primary);
-    transition: all 0.2s;
 }
 
 /* BUTTONS */

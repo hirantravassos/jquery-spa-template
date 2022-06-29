@@ -8,7 +8,7 @@ async function CreateLogoPage() {
 function DisplayLogo() {
 	GetSubsidebarItem("", "", "", true);
 	GetSidebarRelatedItems("", "", "", true);
-	Routes("", "", "logo", "");
+	Routes("logo", "");
 
 	$("#module").hide(350);
 	$("#logo").show(350);

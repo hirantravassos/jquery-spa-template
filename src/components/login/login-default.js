@@ -109,8 +109,8 @@ async function CreateLoginForm(formSetup) {
         `                   <span class="login-title">${titleText}</span>`+
         `                   <span class="login-subtitle">${descriptionText}</span>`+
         `               </div>`+
-        `               <div class="login-fields">`+
-        `                   <span>${usernameText}</span>`+
+        `               <div class="input-fields">`+
+        `                   <span class="login-span">${usernameText}</span>`+
         `                   <input `+
         `                       id="username" `+
         `                       name="username" `+
@@ -118,8 +118,8 @@ async function CreateLoginForm(formSetup) {
         `                       placeholder="${usernamePlaceholder}"`+
         `                       class="login-input">`+
         `               </div>`+
-        `               <div class="login-fields">`+
-        `                   <span>${passwordText}</span>`+
+        `               <div class="input-fields">`+
+        `                   <span class="login-span">${passwordText}</span>`+
         `                   <input `+
         `                       id="password" `+
         `                       name="password" `+
@@ -138,7 +138,7 @@ async function CreateLoginForm(formSetup) {
 
 async function CreateLoginBody(formSetup) {
     const data = JSON.parse(formSetup)
-    
+
     const bodyLogo = data.bodylogo
 
     $('.login').append(
@@ -146,4 +146,14 @@ async function CreateLoginBody(formSetup) {
         `    <img class="login-logo" src="${bodyLogo}">`+
         `</div>`
     ) 
+}
+
+async function Logout() {
+    $('#app').hide(350)
+    $('#app').empty()
+
+    SetCookie('token','',0)
+
+    await CreateLogin()
+    $('#app').show(350)
 }

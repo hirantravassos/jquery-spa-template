@@ -1,7 +1,7 @@
 async function CreateModule() {
 	$("#page").append(`<div id="module" class="module"></div>`);
 
-	await GetCustomModules();
+	await SetupModules();
 }
 
 function DisplayModule() {

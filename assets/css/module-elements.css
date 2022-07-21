@@ -3,7 +3,7 @@
     box-sizing: border-box;
     width: 100%;
     font-size: 18px;
-    color: var(--textcolor);
+    color: var(--primary);
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -16,6 +16,73 @@
     font-size: 16px;
     color: var(--textcolor);
     margin-bottom: 15px;
+    text-transform: none;
+}
+
+.module-button-div {
+    position: relative;
+    display: flex;
+}
+
+.module-button {
+    width: calc(100% - 8px);
+    background-color: var(--primary);
+    color: white;
+    transition: all 0.5s;
+    padding: 4px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    height: 34px;
+    margin: 6px;
+    margin-top: 24px;
+    margin-bottom: 0px;
+    border: 1px solid #8c8c8c;
+    outline: 1px;
+    outline-style: dotted;
+    outline-color: rgba(71, 71, 71, 0.603);
+    outline-offset: 5px;
+}
+
+.module-button:hover {
+    background-color: white;
+    color: var(--primary);
+    outline: 1px;
+	outline-style: solid;
+	outline-color: var(--primary);
+	outline-offset: 5px;
+    cursor: pointer;
+}
+
+.module-search {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    color: var(--textcolor);
+    margin-bottom: 15px;
+    text-transform: none;
+}
+
+.module-search > .module-search-span {
+    width: 100%;
+    margin-bottom: 5px;
+    transform: scale(1.0)!important;
+}
+
+.module-breakline {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.module-body-subtitle {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    color: var(--primary);
     text-transform: none;
 }
 
@@ -46,7 +113,7 @@
 
 .module-submit {
     width: 50%;
-    background-color: var(--green);
+    background-color: var(--primary);
     color: white;
     transition: all 0.5s;
     padding: 5px;
@@ -58,18 +125,18 @@
 .module-submit:hover, .module-submit:focus {
     background-color: white;
     border: 0px;
-    color: var(--green);
+    color: var(--primary);
     font-weight: bold;
     transition: all 0.4s;
     cursor: pointer;
-    box-shadow: 2px 2px 5px var(--green);
+    box-shadow: 2px 2px 5px var(--primary);
     outline: none;
 }
 
 .module-back {
     width: 50%;
-    background-color: var(--red);
-    color: white;
+    background-color: white;
+    color: var(--textcolor);
     transition: all 0.4s;
     padding: 5px;
     border-radius: 5px;
@@ -78,12 +145,12 @@
 }
 
 .module-back:hover, .module-back:focus {
-    background-color: white;
+    background-color: var(--textcolor);
     border: 0px;
-    color: var(--red);
+    color: white;
     font-weight: bold;
     transition: all 0.4s;
     cursor: pointer;
-    box-shadow: 2px 2px 5px var(--red);
+    box-shadow: 2px 2px 5px var(--textcolor);
     outline: none;
 }

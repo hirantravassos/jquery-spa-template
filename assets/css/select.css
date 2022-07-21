@@ -1,32 +1,85 @@
+.input-select {
+    /* display: flex; */
+    position: absolute;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    z-index: 12;
+}
+
+.select-div {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: calc(100% - 2px);
+    height: 100%;
+    z-index: 4;
+    visibility: collapse;
+}
+
 .select {
-    /* display: inline-flex; */
+    position: absolute;
+    z-index: 10;
+
+    display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     box-sizing: border-box;
     background-color: white;
     color: var(--primary);
+    visibility: collapse;
 
-    position: relative;
-
-    /* width: 50%; */
-    padding: 10px;
+    width: calc(100% - 14px);
+    min-height: 33px;
+    max-height: 300px;
+    padding: 5px;
     margin: 0px;
+    margin-top: 40px;
 
-    border-radius: 5px;
-    outline: 1px solid rgba(71, 71, 71, 0.603);
+    border: 1px solid;
+    border-radius: 4px;
+    margin-bottom: 0px;
+	box-sizing: border-box;
 
-    transition: all 0.3s;
+    box-shadow: 3px 3px 5px rgb(66, 66, 66);
+    /* transition: all 0.3s; */
 }
 
-.select:hover {
+.input-fields:focus-within .select {
+    position: absolute;
+    z-index: 2;
+
+    visibility: visible;
     background-color: var(--primary);
     color: rgb(255, 255, 255);
     font-weight: bold;
 
-    transition: all 0.3s;
+    max-height: 300px;
+    overflow-y: auto;
+
+    /* transition: all 0.3s; */
 }
 
-.select:hover li {
+.input-fields:focus-within .select-div {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    visibility: visible;
+
+    font-size: 16px;
+    font-weight: normal;
+
+    height: auto;
+    width: 100%; 
+    /* margin-top: 40px; */
+
+    border-radius: 5px;
+
+    /* transition: all 0.3s; */
+}
+
+.input-fields:focus-within li {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -39,11 +92,10 @@
     height: auto;
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
 
     border-radius: 5px;
 
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
 }
 
 .select li {
@@ -54,7 +106,7 @@
 
     visibility: collapse;
 
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 0px;
     font-weight: normal;
 
@@ -64,7 +116,9 @@
 
     border-radius: 0px;
 
-    transition: all 0.3s;
+    z-index: 10;
+
+    /* transition: all 0.3s; */
 }
 
 .select li:hover {
@@ -74,5 +128,5 @@
 
     cursor: pointer;
 
-    transition: all 0.3s;
+    /* transition: all 0.1s; */
 }

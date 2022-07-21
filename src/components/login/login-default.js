@@ -1,20 +1,27 @@
 async function CreateLogin() {
-    $('#app').append(
-        `<div class="login">`+
-        `</div>`
-    )
-    await SetupLoginBody()
-    await SetupLoginForm()
-    setTimeout(()=>{
-        InputListener()
-    },500)
+    const token = GetCookie('token')
+
+    if (!token) {
+        window.location.hash = ""
+
+        $('#app').append(
+            `<div class="login">`+
+            `</div>`
+        )
+        await SetupLogin()
+    } else {
+        LoggedIn()
+    }
 }
 
 async function CheckCredentials(credentialsData) {
 
     if (credentialsData[0]) {
-        const token = credentialsData[0];
-        const userData = credentialsData[1];
+        let token = ''
+        let userData = ''
+
+        token = credentialsData[0];
+        userData = credentialsData[1];
 
         OnSuccessSetCookies(token,userData)
 
@@ -85,68 +92,6 @@ $('body').on('focus','#username',function() {
 $('body').on('focus','#password',function() {
     ClearInvalidCredentials()
 })
-
-async function CreateLoginForm(formSetup) {
-    const data = JSON.parse(formSetup)
-
-    const logo = data.logo
-    const titleText = data.titleText
-    const descriptionText = data.descriptionText
-    const usernameText = data.usernameText
-    const usernamePlaceholder = data.usernamePlaceholder
-    const passwordText = data.passwordText
-    const passwordPlacehodler = data.passwordPlacehodler
-    const buttonText = data.buttonText
-
-    $('.login').append(
-        `   <div class="login-sidebar">`+
-        `       <form id="login">`+
-        `           <div>`+
-        `               <div class="login-sidebar-logo">`+
-        `                   <img src="${logo}">`+
-        `               </div>`+
-        `               <div class="login-titles">`+
-        `                   <span class="login-title">${titleText}</span>`+
-        `                   <span class="login-subtitle">${descriptionText}</span>`+
-        `               </div>`+
-        `               <div class="input-fields">`+
-        `                   <span class="login-span">${usernameText}</span>`+
-        `                   <input `+
-        `                       id="username" `+
-        `                       name="username" `+
-        `                       autocomplete="email"`+
-        `                       placeholder="${usernamePlaceholder}"`+
-        `                       class="login-input">`+
-        `               </div>`+
-        `               <div class="input-fields">`+
-        `                   <span class="login-span">${passwordText}</span>`+
-        `                   <input `+
-        `                       id="password" `+
-        `                       name="password" `+
-        `                       type="password" `+
-        `                       placeholder="${passwordPlacehodler}"`+
-        `                       class="login-input">`+
-        `               </div>`+
-        `               <div class="login-buttons">`+
-        `                   <button type="submit">${buttonText}</button>`+
-        `               </div>`+
-        `           </div>`+
-        `       </form>`+
-        `   </div>`
-    )
-}
-
-async function CreateLoginBody(formSetup) {
-    const data = JSON.parse(formSetup)
-
-    const bodyLogo = data.bodylogo
-
-    $('.login').append(
-        `<div class="login-body">`+
-        `    <img class="login-logo" src="${bodyLogo}">`+
-        `</div>`
-    ) 
-}
 
 async function Logout() {
     $('#app').hide(350)

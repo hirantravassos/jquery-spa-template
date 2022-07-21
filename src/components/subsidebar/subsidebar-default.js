@@ -86,7 +86,7 @@ function GetSubsidebarItem(
 		);
 	}
 
-	DisplayModule(subsidebarItemId);
+	DisplayModule();
 
 	function SelectItem(subsidebarItemId) {
 		$(`.subsidebar li svg`).removeClass("subsidebar-icon-target");

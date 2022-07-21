@@ -79,7 +79,7 @@
 
     font-weight: bold;
     font-size: 12px;
-    color: var(--primary);
+    color: var(--secundary);
 
     cursor: pointer;
 
@@ -94,11 +94,11 @@
     position: relative;
     z-index: 4;
 
-    color: rgb(224, 224, 224);
+    color: white;
 }
 .sidebar li:hover {
     position: relative;
-    color: rgb(224, 224, 224);
+    color: var(--primary);
     z-index: 3;
 
     transition: all 0.3s;
@@ -111,10 +111,10 @@
     /* color: var(--primary) */
     
     border-radius: 100%;
-    outline: 70px solid var(--primary);
+    outline: 100px solid var(--primary)!important;
     overflow: hidden;
     
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .sidebar-icon {
@@ -124,10 +124,10 @@
     align-self: center;
 
     border-radius: 80%;
-    outline: 0px solid var(--primary);
+    outline: 0px solid var(--secundary);
 
-    font-size: 16px;
-    color: var(--primary);
+    font-size: 20px;
+    color: var(--text-color);
 
     padding: 1px;
     margin-top: 2px;
@@ -143,8 +143,9 @@
     position: relative;
     z-index: 1;
     
+    color: var(--primary);
     border-radius: 100%!important;
-    outline: 70px solid var(--primary)!important;
+    outline: 100px solid var(--primary)!important;
     overflow: hidden;
     
     transition: all 0.5s;
@@ -153,7 +154,7 @@
 .sidebar-a-target {
     position: relative;
     z-index: 4;
-    color: rgb(224, 224, 224);
+    color: white;
     transition: all 0.4s;
 }
 

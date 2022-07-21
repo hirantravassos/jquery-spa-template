@@ -11,7 +11,10 @@ async function API(path,request,type) {
 		return
 	}
 
-	if (!isProduction) {console.log('API-Request: ',request)}
+	if (!isProduction) {
+		console.log('API-Request Path: ',path)
+		console.log('API-Request: ',request)
+	}
 
     const response = await $.ajax({
 		url: `${urlPath}`,

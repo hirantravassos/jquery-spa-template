@@ -1,4 +1,4 @@
-function Routes(sidebarItemName, subsidebarItemName) {
+function Routes(sidebarItemName, subsidebarItemName, parameters) {
 	if (sidebarItemName === 'sidebar-logout' || subsidebarItemName === 'subsidebar-item-logout') {
 		Logout()
 	}
@@ -13,11 +13,17 @@ function Routes(sidebarItemName, subsidebarItemName) {
 		SetCookie("sidebar", sidebarItemName, "1");
 		SetCookie("subsidebar", subsidebarItemName, "1");
 
-		newUrl = sidebarItemName + "/" + subsidebarItemName;
-		$("title").text(sidebarItemName + " - " + subsidebarItemName);
+		if (!parameters) {parameters=""}
+
+
+		newUrl = sidebarItemName + "/" + subsidebarItemName + parameters;
+		// $("title").text(sidebarItemName + " - " + subsidebarItemName);
 	}
 
-	history.pushState({}, null, `#/${newUrl}`);
+	const newURL = String(window.location.hash).split("/");
+	if (newURL[1] !== sidebarItemName || newURL[2] !== subsidebarItemName || parameters !== '') {
+		history.pushState({}, null, `#/${newUrl}`);
+	}
 }
 
 function OnReadyRoutes() {
